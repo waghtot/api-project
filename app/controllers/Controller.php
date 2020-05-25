@@ -76,4 +76,8 @@ class Controller
     {
         return $this->password;
     }
+
+    public function getProjectList(){
+        return ApiModel::getProjectList();   
+    }
 }
