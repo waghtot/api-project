@@ -80,4 +80,20 @@ class Controller
     public function getProjectList(){
         return ApiModel::getProjectList();   
     }
+
+    public function createProject()
+    {
+        $res = ApiModel::createProject();
+        return $res;
+    }
+
+    public function checkAvailability()
+    {
+        $res = ApiModel::checkAvailability();
+        if($res->code !== false)
+        {
+            return true;
+        }
+        return false;
+    }
 }

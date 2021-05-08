@@ -16,7 +16,6 @@ class Master extends Controller
 
 
             $data = $this->getRequest();
-
             if(isset($data->action))
             {
                 $response = false;
@@ -24,6 +23,10 @@ class Master extends Controller
                 {
                     case 'Project List';
                         $response = $this->getProjectList(); 
+                    break;
+                    case 'Create Project';
+                        $response = $this->createProject();
+                        // error_log('response from db: '.print_r($response, 1));
                     break;
                 }
                 echo json_encode($response);

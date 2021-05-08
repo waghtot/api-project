@@ -36,7 +36,20 @@ class ApiModel extends Controller
         $data->params->projectId = $input->projectId;
 
         $res = self::responseObject(self::doAPI($data));
-        error_log('show me projects response: '.print_r($res, 1));
+        return $res;
+    }
+
+    public function createProject()
+    {
+        $input = json_decode(file_get_contents('php://input'));
+        $data = new stdClass();
+        $data->api = 'database';
+        $data->connection = 'PROJECTS';
+        $data->procedure = __FUNCTION__;    
+        $data->params = $input->params;
+        error_log('data to database: '.print_r($data, 1));
+        $res = self::responseObject(self::doAPI($data));
+        error_log('database response: '.print_r($res, 1));
         return $res;
     }
 
